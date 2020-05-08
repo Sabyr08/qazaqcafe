@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffdead;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QazaqCafe.controllers.MainController">
+    <children>
+        <AnchorPane layoutY="120.0" prefHeight="280.0" prefWidth="700.0">
+            <children>
+            <ImageView fitHeight="280.0" fitWidth="700.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/mainImgs/background.png" />
+               </image>
+            </ImageView>
+                <Button fx:id="toSetSeatAndOrderButton" layoutX="394.0" layoutY="124.0" mnemonicParsing="false" style="-fx-border-color: #ffdead; -fx-background-color: rgba(0, 0, 0, 0); -fx-border-radius: 10px; -fx-border-width: 3px;" text="ВЫБРАТЬ СТОЛ И ЗАКАЗАТЬ" textAlignment="CENTER" textFill="NAVAJOWHITE">
+                    <font>
+                        <Font name="Sitka Small Bold Italic" size="16.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="185.0" fitWidth="301.0" layoutX="59.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/mainImgs/ad.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="99.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/mainImgs/action.png" />
+               </image>
+            </ImageView>
+            </children></AnchorPane>
+        <Button fx:id="loginSignInButton" layoutX="576.0" layoutY="-5.0" mnemonicParsing="false" style="-fx-background-color: #ffdead; -fx-border-color: #502800; -fx-border-radius: 0 0 10px 10px;" text="Войти" textFill="#502800">
+            <font>
+                <Font name="Modern No. 20" size="20.0" />
+            </font>
+        </Button>
+      <ImageView fitHeight="97.0" fitWidth="458.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../media/mainImgs/logo.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
