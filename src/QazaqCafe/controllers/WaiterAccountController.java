@@ -63,12 +63,12 @@ public class WaiterAccountController extends LoginSignInController {
 
         ResultSet result = dbHandler.getWaiter(waiter);
 
-        String id = "?";
-        String name = "?";
-        String sname = "?";
-        String age = "?";
-        String login = "?";
-        String position = "?";
+        String id = "1";
+        String name = "qwe";
+        String sname = "asd";
+        String age = "18";
+        String login = "qwerty";
+        String position = "waiter";
         String img = "?";
 
         while (true) {

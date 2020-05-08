@@ -69,8 +69,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1bEQIQ6bVySD2nfZyxfSgT3tG4P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -94,6 +98,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -225,26 +230,26 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="299" y="87" key="DBNavigator.ProjectSettingsDialog/0.0.1536.864@0.0.1536.864" timestamp="1588442714662" />
-    <state x="473" y="174" key="FileChooserDialogImpl" timestamp="1588251537963">
+    <state x="473" y="174" key="FileChooserDialogImpl" timestamp="1588929009413">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="473" y="174" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1588251537963" />
-    <state width="1537" height="237" key="GridCell.Tab.0.bottom" timestamp="1588924605612">
+    <state x="473" y="174" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1588929009413" />
+    <state width="1537" height="237" key="GridCell.Tab.0.bottom" timestamp="1588928479109">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588924605612" />
-    <state width="1537" height="237" key="GridCell.Tab.0.center" timestamp="1588924605610">
+    <state width="1537" height="237" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588928479109" />
+    <state width="1537" height="237" key="GridCell.Tab.0.center" timestamp="1588928479109">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1588924605610" />
-    <state width="1537" height="237" key="GridCell.Tab.0.left" timestamp="1588924605609">
+    <state width="1537" height="237" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1588928479109" />
+    <state width="1537" height="237" key="GridCell.Tab.0.left" timestamp="1588928479109">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1588924605609" />
-    <state width="1537" height="237" key="GridCell.Tab.0.right" timestamp="1588924605611">
+    <state width="1537" height="237" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1588928479109" />
+    <state width="1537" height="237" key="GridCell.Tab.0.right" timestamp="1588928479109">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1537" height="237" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1588924605611" />
+    <state width="1537" height="237" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1588928479109" />
     <state width="1537" height="286" key="GridCell.Tab.1.bottom" timestamp="1588495110173">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -261,10 +266,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1537" height="286" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1588495110173" />
-    <state x="249" y="7" key="SettingsEditor" timestamp="1588240918321">
+    <state x="249" y="7" key="SettingsEditor" timestamp="1588929058527">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1588240918321" />
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1588929058527" />
     <state x="465" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1588437747830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -273,6 +278,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="336" y="39" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.864@0.0.1536.864" timestamp="1588493154534" />
+    <state x="578" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588928466587">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="578" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1588928466587" />
     <state x="209" y="134" key="new project wizard" timestamp="1588230138248">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
