@@ -1,11 +1,17 @@
 package QazaqCafe.classes;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable {
     private int id;
     private String login;
     private String password;
 
     public Admin() {
+    }
+
+    public Admin(String login) {
+        this.login = login;
     }
 
     public Admin(int id, String login, String password) {

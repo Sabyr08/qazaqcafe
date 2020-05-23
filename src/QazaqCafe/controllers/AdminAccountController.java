@@ -1,8 +1,11 @@
 package QazaqCafe.controllers;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import QazaqCafe.classes.Admin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,6 +36,12 @@ public class AdminAccountController {
 
     @FXML
     void initialize() {
+        try {
+            adminData();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         exetButton.setOnAction(event -> {
             exetButton.getScene().getWindow().hide();
 
@@ -50,12 +59,40 @@ public class AdminAccountController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+    }
 
-        setAdminDate("Abzal");
+    private void adminData() throws IOException, ClassNotFoundException {
+        Socket socket = new Socket("localhost", 8000);
+
+        BufferedReader bufferedReader =
+                new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()
+                        )
+                );
+
+        BufferedWriter bufferedWriter =
+                new BufferedWriter(
+                        new OutputStreamWriter(
+                                socket.getOutputStream()
+                        )
+                );
+
+        PrintWriter printWriter = new PrintWriter(bufferedWriter, true);
+
+        ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+        printWriter.println("admin");
+
+        Admin admin = (Admin)objectInputStream.readObject();
+
+        System.out.println(admin.getLogin());
+
+        setAdminData(admin.getLogin());
     }
 
     @FXML
-    public void setAdminDate(String name) {
+    public void setAdminData(String name) {
         adminName.setText(name);
     }
 }

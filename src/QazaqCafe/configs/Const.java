@@ -16,4 +16,9 @@ public class Const {
     public static final String ADMIN_ID = "id";
     public static final String ADMIN_LOGIN = "login";
     public static final String ADMIN_PASSWORD = "password";
+
+    public static final String SEAT_TABLE = "qazaqcafe.seat";
+
+    public static final String SEAT_ID = "id";
+    public static final String SEAT_CHECK = "check";
 }

@@ -1,14 +1,10 @@
 package QazaqCafe.controllers;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import QazaqCafe.classes.Admin;
-import QazaqCafe.classes.Waiter;
-import QazaqCafe.configs.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class LoginSignInController {
@@ -28,6 +25,9 @@ public class LoginSignInController {
 
     @FXML
     private TextField loginField;
+
+    @FXML
+    private Label text_error;
 
     @FXML
     private PasswordField passwordField;
@@ -57,44 +57,49 @@ public class LoginSignInController {
     }
 
     private void loginUser(String loginText, String loginPassword) {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        Admin admin = new Admin();
+        try {
+            Socket socket = new Socket("localhost", 8000);
 
-        admin.setLogin(loginText);
-        admin.setPassword(loginPassword);
-        ResultSet resultAd = dbHandler.getAdmin(admin);
+            BufferedReader bufferedReader =
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    socket.getInputStream()
+                            )
+                    );
 
-        Waiter waiter = new Waiter();
+            BufferedWriter bufferedWriter =
+                    new BufferedWriter(
+                            new OutputStreamWriter(
+                                    socket.getOutputStream()
+                            )
+                    );
 
-        waiter.setLogin(loginText);
-        waiter.setPassword(loginPassword);
-        ResultSet result = dbHandler.getWaiter(waiter);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter, true);
 
-        int counterWaiter = 0;
-        while (true) {
-            try {
-                if (!result.next()) break;
-            } catch (SQLException e) {
-                e.printStackTrace();
+            printWriter.println(loginText);
+            printWriter.println(loginPassword);
+
+            String correct = bufferedReader.readLine();
+
+            if (correct.equals("admin")) {
+                printWriter.println("connected");
+                setNewWindow("../scenes/adminAccount.fxml");
             }
-            counterWaiter++;
-        }
-
-        int counterAd = 0;
-        while (true) {
-            try {
-                if (!resultAd.next()) break;
-            } catch (SQLException e) {
-                e.printStackTrace();
+            else if (correct.equals("waiter")) {
+                printWriter.println("connected");
+                setNewWindow("../scenes/waiterAccount.fxml");
             }
-            counterAd++;
-        }
+            else if (correct.equals("error"))
+                setError("Ошибка!");
 
-        if (counterWaiter >= 1) {
-            setNewWindow("../scenes/waiterAccount.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else if (counterAd >= 1) setNewWindow("../scenes/adminAccount.fxml");
-        else System.out.println("error!");
+    }
+
+    @FXML
+    public void setError(String error) {
+        text_error.setText(error);
     }
 
     public void setNewWindow(String window) {

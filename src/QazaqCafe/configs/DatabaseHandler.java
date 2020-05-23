@@ -1,6 +1,7 @@
 package QazaqCafe.configs;
 
 import QazaqCafe.classes.Admin;
+import QazaqCafe.classes.Seat;
 import QazaqCafe.classes.Waiter;
 
 import java.sql.Connection;
@@ -71,9 +72,7 @@ public class DatabaseHandler extends Configs{
             prSt.setString(2, waiter.getPassword());
 
             resSet = prSt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -90,11 +89,19 @@ public class DatabaseHandler extends Configs{
             prSt.setString(2, admin.getPassword());
 
             resSet = prSt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        return resSet;
+    }
+
+    public ResultSet getSeat(Seat seat) throws SQLException, ClassNotFoundException {
+        ResultSet resSet = null;
+        String select = "SELECT * FROM " + Const.SEAT_TABLE;
+
+        PreparedStatement prSt = getDbConnection().prepareStatement(select);
+        resSet = prSt.executeQuery();
 
         return resSet;
     }

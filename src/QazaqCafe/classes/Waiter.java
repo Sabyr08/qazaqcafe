@@ -1,6 +1,8 @@
 package QazaqCafe.classes;
 
-public class Waiter {
+import java.io.Serializable;
+
+public class Waiter implements Serializable {
     private int id;
     private String name;
     private String surname;
@@ -8,11 +10,22 @@ public class Waiter {
     private String login;
     private String password;
     private String position;
+    private String img;
 
     public Waiter() {
     }
 
-    public Waiter(int id, String name, String surname, int age, String login, String password, String position) {
+    public Waiter(int id, String name, String surname, int age, String login, String position, String img) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.login = login;
+        this.position = position;
+        this.img = img;
+    }
+
+    public Waiter(int id, String name, String surname, int age, String login, String password, String position, String img) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -20,6 +33,7 @@ public class Waiter {
         this.login = login;
         this.password = password;
         this.position = position;
+        this.img = img;
     }
 
     public int getId() {
@@ -76,5 +90,13 @@ public class Waiter {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

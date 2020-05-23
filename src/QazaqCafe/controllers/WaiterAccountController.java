@@ -1,21 +1,22 @@
 package QazaqCafe.controllers;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.Socket;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import QazaqCafe.classes.Waiter;
-import QazaqCafe.configs.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class WaiterAccountController extends LoginSignInController {
@@ -25,9 +26,6 @@ public class WaiterAccountController extends LoginSignInController {
 
     @FXML
     private URL location;
-
-    @FXML
-    private ImageView waiterImg;
 
     @FXML
     private Label waiterId;
@@ -57,39 +55,16 @@ public class WaiterAccountController extends LoginSignInController {
     private Button waiterChangePassword;
 
     @FXML
+    private Pane Uimg;
+
+
+    @FXML
     void initialize() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        Waiter waiter = new Waiter();
-
-        ResultSet result = dbHandler.getWaiter(waiter);
-
-        String id = "1";
-        String name = "qwe";
-        String sname = "asd";
-        String age = "18";
-        String login = "qwerty";
-        String position = "waiter";
-        String img = "?";
-
-        while (true) {
-            try {
-                if (!result.next()) break;
-
-                id = String.valueOf(result.getInt("id"));
-                name = result.getString("name");
-                sname = result.getString("sname");
-                age = String.valueOf(result.getInt("age"));
-                login = result.getString("login");
-                position = result.getString("position");
-                img = result.getString("img");
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
+        try {
+            waiterData();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
-
-        setWaiterDate(id, name, sname, age, login, position);
 
         exetButton.setOnAction(event -> {
             exetButton.getScene().getWindow().hide();
@@ -110,14 +85,51 @@ public class WaiterAccountController extends LoginSignInController {
         });
     }
 
+    private void waiterData() throws SQLException, IOException, ClassNotFoundException {
+        Socket socket = new Socket("localhost", 8000);
+
+        BufferedReader bufferedReader =
+                new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()
+                        )
+                );
+
+        BufferedWriter bufferedWriter =
+                new BufferedWriter(
+                        new OutputStreamWriter(
+                                socket.getOutputStream()
+                        )
+                );
+
+        PrintWriter printWriter = new PrintWriter(bufferedWriter, true);
+
+        ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+        printWriter.println("waiter");
+
+        Waiter waiter = (Waiter)objectInputStream.readObject();
+
+        setWaiterData(waiter);
+    }
+
     @FXML
-    public void setWaiterDate(String id, String name, String sname, String age, String login, String position) {
-        waiterId.setText(id);
-        waiterName.setText(name);
-        waiterSname.setText(sname);
-        waiterAge.setText(age);
-        waiterLogin.setText(login);
-        waiterPosition.setText(position);
+    public void setWaiterData(Waiter waiter) throws MalformedURLException {
+        waiterId.setText(String.valueOf(waiter.getId()));
+        waiterName.setText(waiter.getName());
+        waiterSname.setText(waiter.getSurname());
+        waiterAge.setText(String.valueOf(waiter.getAge()));
+        waiterLogin.setText(waiter.getLogin());
+        waiterPosition.setText(waiter.getPosition());
+
+        File input = new File("D:/IITU/JAVA/session/src/QazaqCafe/media/userimg/" + waiter.getImg());
+        String localUrl = input.toURI().toURL().toString();
+
+        Uimg.getChildren().clear();
+        Image image = new Image(localUrl);
+        ImageView img = new ImageView();
+        img.setImage(image);
+        Uimg.getChildren().add(img);
     }
 }
 

@@ -6,10 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.io.*;
 
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Parent root = FXMLLoader.load(getClass().getResource("scenes/mainFX.fxml"));
         primaryStage.setTitle("Qazaq Cafe");
         primaryStage.setScene(new Scene(root, 700, 400));
@@ -18,7 +20,7 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
     }
 }
